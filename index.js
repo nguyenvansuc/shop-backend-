@@ -27,7 +27,7 @@ const connectDB = async () => {
 connectDB();
 
 const app = express();
-const PORT = process.env.port || 5050;
+const PORT = process.env.PORT || 5050;
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true,limit: '50mb' }));
