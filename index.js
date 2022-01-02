@@ -11,12 +11,10 @@ const connectDB = async () => {
   try {
     await mongoose.connect(
       // `mongodb+srv://dulich:dulich@cluster0.phz2s.gcp.mongodb.net/dulich?retryWrites=true&w=majority`,
-      `mongodb+srv://shop-online:<password>@cluster0.98vlq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      `mongodb+srv://shop-online:shop-online@cluster0.98vlq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
       {
-        useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false,
       }
     );
 
@@ -43,6 +41,9 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/order',orderRouter);
+app.get('/', (req, res) => {
+  res.json('success');
+});
 
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
