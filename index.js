@@ -5,14 +5,28 @@ import productRouter from './routers/productRouter.js'
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import mongoose from 'mongoose';
-mongoose
-  .connect('mongodb://localhost/Shop')
-  .then(() => {
-    console.log('connect to DB');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+
+// Connect the database
+const connectDB = async () => {
+  try {
+    await mongoose.connect(
+      // `mongodb+srv://dulich:dulich@cluster0.phz2s.gcp.mongodb.net/dulich?retryWrites=true&w=majority`,
+      `mongodb+srv://shop-online:<password>@cluster0.98vlq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+      }
+    );
+
+    console.log('MongoDB connected');
+  } catch (error) {
+    console.log(error.message);
+    process.exit(1);
+  }
+};
+connectDB();
 
 const app = express();
 const PORT = process.env.port || 5050;
