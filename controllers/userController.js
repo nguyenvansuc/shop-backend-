@@ -17,9 +17,9 @@ export const getUser = async (req, res) => {
     console.log({ username, password });
     const result = await UserModel.findOne({ username }).exec();
     console.log(result, 'result');
-    if (!result) return res.json('Incorrect user');
+    if (!result) return res.json({ message:'Incorrect username !'});
     if ((await result.correctPassword(password, result.password)) === false) {
-      return res.status(400).json('Mat khau sai');
+      return res.status(400).json({ message:'Incorrect password !'});
     }
     const resData = { id: result?._id, username: result?.username,rules: result?.rules};
     var token = jwt.sign(resData, 'userToken', { expiresIn: '7d' });
