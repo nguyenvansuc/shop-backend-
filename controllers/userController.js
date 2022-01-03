@@ -19,7 +19,7 @@ export const getUser = async (req, res) => {
     console.log(result, 'result');
     if (!result) return res.json({ message:'Incorrect username !'});
     if ((await result.correctPassword(password, result.password)) === false) {
-      return res.status(400).json({ message:'Incorrect password !'});
+      return res.json({ message:'Incorrect password !'});
     }
     const resData = { id: result?._id, username: result?.username,rules: result?.rules};
     var token = jwt.sign(resData, 'userToken', { expiresIn: '7d' });
