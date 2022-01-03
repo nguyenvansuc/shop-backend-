@@ -2,6 +2,15 @@ import UserModel from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
+export const getAllUser=async(req,res) => {
+  try {
+    const allUser=await UserModel.find({})
+    res.status(200).json(allUser)
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+
 export const getUser = async (req, res) => {
   try {
     const { username, password } = req.body;

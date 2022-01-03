@@ -5,6 +5,7 @@ import productRouter from './routers/productRouter.js'
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 // Connect the database
 const connectDB = async () => {
@@ -48,3 +49,11 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
 });
+
+const test=async()=>{
+  const check=await bcrypt.hash('111', 12);
+console.log(check,'test');
+const result = await bcrypt.compare('111', check);
+console.log(result)
+}
+test()
