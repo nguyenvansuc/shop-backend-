@@ -12,7 +12,7 @@ const connectDB = async () => {
   try {
     await mongoose.connect(
       // `mongodb+srv://dulich:dulich@cluster0.phz2s.gcp.mongodb.net/dulich?retryWrites=true&w=majority`,
-      `mongodb+srv://shop-online:shop-online@cluster0.98vlq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      `mongodb+srv://nguyensuc769:nguyensuc769@cluster0.rrftkvm.mongodb.net/?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -28,7 +28,7 @@ const connectDB = async () => {
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5050;
+const PORT = 3002;
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true,limit: '50mb' }));
